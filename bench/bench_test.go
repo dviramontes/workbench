@@ -1,4 +1,4 @@
-package main
+package bench
 
 import (
 	"reflect"
@@ -28,9 +28,9 @@ func Test_maxMeetings(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := maxMeetings(tt.args.start, tt.args.end)
+			result := MaxMeetings(tt.args.start, tt.args.end)
 			if !reflect.DeepEqual(result, tt.want) {
-				t.Errorf("maxMeetings() = %v, want %v", maxMeetings(tt.args.start, tt.args.end), tt.want)
+				t.Errorf("MaxMeetings() = %v, want %v", MaxMeetings(tt.args.start, tt.args.end), tt.want)
 			}
 		})
 	}
@@ -58,8 +58,8 @@ func Test_canAttendMeetings(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := canAttendMeetings(tt.args.intervals); got != tt.want {
-				t.Errorf("canAttendMeetings() = %v, want %v", got, tt.want)
+			if got := CanAttendMeetings(tt.args.intervals); got != tt.want {
+				t.Errorf("CanAttendMeetings() = %v, want %v", got, tt.want)
 			}
 		})
 	}
