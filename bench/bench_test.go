@@ -64,3 +64,50 @@ func Test_canAttendMeetings(t *testing.T) {
 		})
 	}
 }
+
+func TestMergeAlternate(t *testing.T) {
+	type args struct {
+		word1 string
+		word2 string
+	}
+
+	testing.Verbose()
+
+	var tests = []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "A",
+			args: args{
+				word1: "abc",
+				word2: "xyz",
+			},
+			want: "axbycz",
+		},
+		{
+			name: "B",
+			args: args{
+				word1: "abcd",
+				word2: "pq",
+			},
+			want: "apbqcd",
+		},
+		{
+			name: "C",
+			args: args{
+				word1: "ab",
+				word2: "pqrs",
+			},
+			want: "apbqrs",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := MergeAlternate(tt.args.word1, tt.args.word2); got != tt.want {
+				t.Errorf("MergeAlternate() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

@@ -1,6 +1,9 @@
 package bench
 
-import "sort"
+import (
+	"bytes"
+	"sort"
+)
 
 func MaxMeetings(start []int, end []int) []int {
 	// keep track of the meetings that can be scheduled
@@ -52,4 +55,33 @@ func TwoSum(nums []int, target int) []int {
 	}
 
 	return []int{}
+}
+
+func MergeAlternate(word1 string, word2 string) string {
+	var buf bytes.Buffer
+
+	if len(word1) == len(word2) {
+		for i := 0; i < len(word1); i++ {
+			buf.WriteRune(rune(word1[i]))
+			buf.WriteRune(rune(word2[i]))
+		}
+		return buf.String()
+	}
+
+	var shortWordLength int
+	var rest string
+	if len(word1) > len(word2) {
+		shortWordLength = len(word1) - len(word2)
+		rest = word1[len(word2):]
+	} else {
+		shortWordLength = len(word2) - len(word1)
+		rest = word2[len(word1):]
+	}
+
+	for i := 0; i < shortWordLength; i++ {
+		buf.WriteRune(rune(word1[i]))
+		buf.WriteRune(rune(word2[i]))
+	}
+
+	return buf.String() + rest
 }
