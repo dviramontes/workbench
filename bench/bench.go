@@ -71,10 +71,10 @@ func MergeAlternate(word1 string, word2 string) string {
 	var shortWordLength int
 	var rest string
 	if len(word1) > len(word2) {
-		shortWordLength = len(word1) - len(word2)
+		shortWordLength = len(word2)
 		rest = word1[len(word2):]
 	} else {
-		shortWordLength = len(word2) - len(word1)
+		shortWordLength = len(word1)
 		rest = word2[len(word1):]
 	}
 

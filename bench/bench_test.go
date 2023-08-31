@@ -102,6 +102,14 @@ func TestMergeAlternate(t *testing.T) {
 			},
 			want: "apbqrs",
 		},
+		{
+			name: "D",
+			args: args{
+				word1: "cdf",
+				word2: "a",
+			},
+			want: "cadf",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
