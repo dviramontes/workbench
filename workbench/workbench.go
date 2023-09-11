@@ -1,8 +1,9 @@
-package bench
+package workbench
 
 import (
 	"bytes"
 	"sort"
+	"strings"
 )
 
 func MaxMeetings(start []int, end []int) []int {
@@ -84,4 +85,27 @@ func MergeAlternate(word1 string, word2 string) string {
 	}
 
 	return buf.String() + rest
+}
+
+func GreatestCommonDivisor(str1 string, str2 string) string {
+	if !strings.Contains(str1, str2) {
+		return ""
+	}
+	var common string
+
+	var longer string
+	if len(str1) > len(str2) {
+		longer = str1
+	} else {
+		longer = str2
+	}
+
+	for i := 0; i < len(longer); i++ {
+		if strings.ContainsAny(common, string(rune(str1[i]))) {
+			return common
+		}
+		common += string(rune(str1[i]))
+	}
+
+	return ""
 }

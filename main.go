@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"workbench/bench"
+	"workbench/workbench"
 )
 
 func main() {
@@ -37,6 +37,14 @@ func main() {
 	// merged: a p b q c r
 	word1 := "abc"
 	word2 := "pqr"
-	mergeAlt := bench.MergeAlternate(word1, word2)
+	mergeAlt := workbench.MergeAlternate(word1, word2)
 	fmt.Printf("merge alternate: %+v\n", mergeAlt)
+
+	// 1071. Greatest Common Divisor of Strings
+	// Input: str1 = "ABCABC", str2 = "ABC"
+	// Output: "ABC"
+	// Input: str1 = "LEET", str2 = "CODE"
+	// Output: ""
+	gcd := workbench.GreatestCommonDivisor("ABCABC", "ABC")
+	fmt.Printf("gcd: %+v\n", gcd)
 }

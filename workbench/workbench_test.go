@@ -1,4 +1,4 @@
-package bench
+package workbench
 
 import (
 	"reflect"
@@ -115,6 +115,31 @@ func TestMergeAlternate(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := MergeAlternate(tt.args.word1, tt.args.word2); got != tt.want {
 				t.Errorf("MergeAlternate() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestGreatestCommonDivisor(t *testing.T) {
+	type args struct {
+		str1 string
+		str2 string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+
+		{"A", args{"ABCABC", "ABC"}, "ABC"},
+		{"B", args{"ABABAB", "ABAB"}, "AB"},
+		{"C", args{"LEET", "CODE"}, ""},
+		{"D", args{"TAUXXTAUXXTAUXXTAUXXTAUXX", "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX"}, "TAUXX"},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := GreatestCommonDivisor(tt.args.str1, tt.args.str2); got != tt.want {
+				t.Errorf("GreatestCommonDivisor() = %v, want %v", got, tt.want)
 			}
 		})
 	}
