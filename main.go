@@ -35,10 +35,10 @@ func main() {
 	// word1:  a   b   c
 	// word2:    p   q   r
 	// merged: a p b q c r
-	word1 := "abc"
-	word2 := "pqr"
-	mergeAlt := workbench.MergeAlternate(word1, word2)
-	fmt.Printf("merge alternate: %+v\n", mergeAlt)
+	//word1 := "abc"
+	//word2 := "pqr"
+	//mergeAlt := workbench.MergeAlternate(word1, word2)
+	//fmt.Printf("merge alternate: %+v\n", mergeAlt)
 
 	// 1071. Greatest Common Divisor of Strings
 	// Input: str1 = "ABCABC", str2 = "ABC"

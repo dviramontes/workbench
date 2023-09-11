@@ -87,25 +87,28 @@ func MergeAlternate(word1 string, word2 string) string {
 	return buf.String() + rest
 }
 
+// GreatestCommonDivisor
+// time complexity: min(m, n) * (n * m)
 func GreatestCommonDivisor(str1 string, str2 string) string {
 	if !strings.Contains(str1, str2) {
 		return ""
 	}
-	var common string
 
-	var longer string
-	if len(str1) > len(str2) {
-		longer = str1
-	} else {
-		longer = str2
-	}
-
-	for i := 0; i < len(longer); i++ {
-		if strings.ContainsAny(common, string(rune(str1[i]))) {
-			return common
+	l1 := len(str1)
+	l2 := len(str2)
+	minLength := min(l1, l2)
+	for l := minLength; l >= minLength; l-- {
+		if isDivisor(l, l1, l2) {
+			return str1[:l]
 		}
-		common += string(rune(str1[i]))
 	}
 
 	return ""
+}
+
+func isDivisor(l, l1, l2 int) bool {
+	if l1%l == 0 || l2%l == 0 {
+		return false
+	}
+	return true
 }
