@@ -112,3 +112,30 @@ func isDivisor(l, l1, l2 int) bool {
 	}
 	return true
 }
+
+// ContainsDuplicate
+// brute force
+func ContainsDuplicate(n []int) bool {
+	sort.Slice(n, func(i, j int) bool {
+		return n[i] < n[j]
+	})
+
+	for i := 0; i < len(n)-1; i++ {
+		if n[i] == n[i+1] {
+			return true
+		}
+	}
+	return false
+}
+
+// ContainsDuplicateBetter
+func ContainsDuplicateBetter(n []int) bool {
+	m := make(map[int]bool)
+	for _, v := range n {
+		if _, found := m[v]; found {
+			return true
+		}
+		m[v] = true
+	}
+	return false
+}

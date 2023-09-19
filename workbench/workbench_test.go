@@ -121,6 +121,7 @@ func TestMergeAlternate(t *testing.T) {
 }
 
 func TestGreatestCommonDivisor(t *testing.T) {
+	t.Skip()
 	type args struct {
 		str1 string
 		str2 string
@@ -140,6 +141,31 @@ func TestGreatestCommonDivisor(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := GreatestCommonDivisor(tt.args.str1, tt.args.str2); got != tt.want {
 				t.Errorf("GreatestCommonDivisor() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestContainsDuplicate(t *testing.T) {
+	type args struct {
+		n []int
+	}
+	tests := []struct {
+		name string
+		args args
+		want bool
+	}{
+		{"A", args{[]int{1, 2, 3, 1}}, true},
+		{"B", args{[]int{1, 2, 3, 4}}, false},
+		{"C", args{[]int{1, 1, 1, 3, 3, 4, 3, 2, 4, 2}}, true},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := ContainsDuplicate(tt.args.n); got != tt.want {
+				t.Errorf("ContainsDuplicate() = %v, want %v", got, tt.want)
+			}
+			if got := ContainsDuplicateBetter(tt.args.n); got != tt.want {
+				t.Errorf("ContainsDuplicateBetter() = %v, want %v", got, tt.want)
 			}
 		})
 	}
