@@ -47,12 +47,14 @@ func CanAttendMeetings(intervals []Interval) bool {
 }
 
 func TwoSum(nums []int, target int) []int {
+	compliments := make(map[int]int)
+
 	for i := 0; i < len(nums); i++ {
-		for j := i + 1; j < len(nums); j++ {
-			if nums[i]+nums[j] == target {
-				return []int{i, j}
-			}
+		compliment := target - nums[i]
+		if j, found := compliments[compliment]; found {
+			return []int{j, i}
 		}
+		compliments[nums[i]] = i
 	}
 
 	return []int{}
