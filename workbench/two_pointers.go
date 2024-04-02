@@ -17,3 +17,30 @@ func TwoSumUsingTwoPointers(nums []int, target int) bool {
 
 	return false
 }
+
+func CombineArrayUsingTwoPointers(a []int, b []int) (c []int) {
+	i := 0
+	j := 0
+
+	for i < len(a) && j < len(b) {
+		if a[i] < b[j] {
+			c = append(c, a[i])
+			i++
+		} else {
+			c = append(c, b[j])
+			j++
+		}
+	}
+
+	// ensure both iterables are exhausted
+	for i < len(a) {
+		c = append(c, a[i])
+		i++
+	}
+
+	for j < len(b) {
+		c = append(c, b[j])
+		j++
+	}
+	return c
+}
