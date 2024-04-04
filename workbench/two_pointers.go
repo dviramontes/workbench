@@ -44,3 +44,17 @@ func CombineArrayUsingTwoPointers(a []int, b []int) (c []int) {
 	}
 	return c
 }
+
+func IsSubSequenceUsingTwoPointers(a string, b string) bool {
+	i := 0
+	j := 0
+	for i < len(a) && j < len(b) {
+		if a[i] == b[j] {
+			i++
+		} else {
+			j++
+		}
+	}
+
+	return i == len(a)
+}

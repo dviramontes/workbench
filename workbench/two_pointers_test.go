@@ -57,3 +57,39 @@ func TestCombineArrayUsingTwoPointers(t *testing.T) {
 		})
 	}
 }
+
+func TestIsSubSequenceUsingTwoPointers(t *testing.T) {
+	type args struct {
+		a string
+		b string
+	}
+	tests := []struct {
+		name string
+		args args
+		want bool
+	}{
+		{
+			name: "A",
+			args: args{
+				a: "ace",
+				b: "abcde",
+			},
+			want: true,
+		},
+		{
+			name: "B",
+			args: args{
+				a: "xyz",
+				b: "axybgdc",
+			},
+			want: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := IsSubSequenceUsingTwoPointers(tt.args.a, tt.args.b); got != tt.want {
+				t.Errorf("IsSubSequenceUsingTwoPointers() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
