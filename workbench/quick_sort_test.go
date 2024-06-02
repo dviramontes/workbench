@@ -7,7 +7,7 @@ import (
 
 func TestQuickSort(t *testing.T) {
 	type args struct {
-		list   []int
+		list []int
 	}
 
 	tests := []struct {
@@ -15,7 +15,7 @@ func TestQuickSort(t *testing.T) {
 		args args
 		want []int
 	}{
-		{"A", args{[]int{4,1,3,2}}, []int{1,2,3,4}},
+		{"A", args{[]int{4, 1, 3, 2}}, []int{1, 2, 3, 4}},
 	}
 
 	for _, test := range tests {

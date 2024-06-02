@@ -46,20 +46,6 @@ func CanAttendMeetings(intervals []Interval) bool {
 	return canAttend
 }
 
-func TwoSum(nums []int, target int) []int {
-	compliments := make(map[int]int)
-
-	for i := 0; i < len(nums); i++ {
-		compliment := target - nums[i]
-		if j, found := compliments[compliment]; found {
-			return []int{j, i}
-		}
-		compliments[nums[i]] = i
-	}
-
-	return []int{}
-}
-
 func MergeAlternate(word1 string, word2 string) string {
 	var buf bytes.Buffer
 
