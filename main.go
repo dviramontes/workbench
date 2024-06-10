@@ -1,29 +1,39 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
-func BinarySearch(list []int, target int) int {
-	low := 0
-	high := len(list) - 1
-	for low <= high {
-		mid := (high + low) / 2
-		guess := list[mid]
-		if target == guess {
-			return mid
-		}
-
-		if guess > target {
-			high = mid - 1
+func QuickSort(list []int) []int {
+	if len(list) < 2 {
+		return list
+	}
+	
+	pivot := list[rand.Intn(len(list))]
+	var greaterThan, sameAs, lessThan []int
+	
+	for _, v := range(list) {
+		if v > pivot {
+			greaterThan = append(greaterThan, v)
+		} else if v < pivot {
+			lessThan = append(lessThan, v)
 		} else {
-			low = mid + 1
+			sameAs = append(sameAs, v)
 		}
 	}
-
-	return -1
+	
+	less := QuickSort(lessThan)
+	greater := QuickSort(greaterThan)
+	sorted := append(less, sameAs...)
+	sorted = append(sorted, greater...)
+	
+	return sorted
+	
 }
 
 func main() {
-	got := BinarySearch([]int{1, 2, 3, 4, 5}, 3)
+	got := QuickSort([]int{5,1,1,2,0,0})
 	fmt.Printf("got: %d\n", got)
 
 }
