@@ -1,29 +1,27 @@
 package workbench
 
-func QuickSort(list []int) (sorted []int) {
+import "math/rand"
+
+func QuickSort(list []int) []int {
 	if len(list) < 2 {
 		return list
 	}
 
-	pivot := list[0]
-
-	var lessThan, greaterThan, same []int
-
+	r := rand.Intn(len(list))
+	var same, less, greater []int
+	pivot := list[r]
 	for _, v := range list {
-		if v < pivot {
-			lessThan = append(lessThan, v)
-		} else if v > pivot {
-			greaterThan = append(greaterThan, v)
+		if v > pivot {
+			greater = append(greater, v)
+		} else if v < pivot {
+			less = append(less, v)
 		} else {
 			same = append(same, v)
 		}
 	}
 
-	l := QuickSort(lessThan)
-	g := QuickSort(greaterThan)
-
-	sorted = append(l, same...)
-	sorted = append(sorted, g...)
+	sorted := append(QuickSort(less), same...)
+	sorted = append(sorted, QuickSort(greater)...)
 
 	return sorted
 }

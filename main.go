@@ -10,29 +10,27 @@ func QuickSort(list []int) []int {
 		return list
 	}
 
-	pivot := list[rand.Intn(len(list))]
-	var greaterThan, sameAs, lessThan []int
-
+	r := rand.Intn(len(list))
+	var same, less, greater []int
+	pivot := list[r]
 	for _, v := range list {
 		if v > pivot {
-			greaterThan = append(greaterThan, v)
+			greater = append(greater, v)
 		} else if v < pivot {
-			lessThan = append(lessThan, v)
+			less = append(less, v)
 		} else {
-			sameAs = append(sameAs, v)
+			same = append(same, v)
 		}
 	}
 
-	less := QuickSort(lessThan)
-	greater := QuickSort(greaterThan)
-	sorted := append(less, sameAs...)
-	sorted = append(sorted, greater...)
+	sorted := append(QuickSort(less), same...)
+	sorted = append(sorted, QuickSort(greater)...)
 
 	return sorted
 }
 
 func main() {
-	got := QuickSort([]int{5, 1, 1, 2, 0, 0})
+	got := QuickSort([]int{5, 1, 1, 2, 0, 0, 3, 6, 6, 2})
 	fmt.Printf("got: %d\n", got)
 
 }
