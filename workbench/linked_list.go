@@ -12,7 +12,7 @@ import (
 
 type Node struct {
 	Data int
-	next *Node
+	Next *Node
 }
 
 type LinkedList struct {
@@ -30,10 +30,10 @@ func (ll *LinkedList) Insert(data int) {
 	}
 
 	current := ll.head
-	for current.next != nil {
-		current = current.next
+	for current.Next != nil {
+		current = current.Next
 	}
-	current.next = newNode
+	current.Next = newNode
 	ll.length++
 }
 
@@ -43,17 +43,17 @@ func (ll *LinkedList) Print() {
 
 	for current != nil {
 		fmt.Printf("-> %d\n", current.Data)
-		current = current.next
+		current = current.Next
 	}
 }
 
 func (ll *LinkedList) Search(data int) bool {
 	current := ll.head
 	for current != nil {
-		if current.next.Data == data {
+		if current.Next.Data == data {
 			return true
 		}
-		current = current.next
+		current = current.Next
 	}
 
 	return false

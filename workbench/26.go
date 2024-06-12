@@ -8,7 +8,7 @@ func RemoveElementsFromSortedArray(nums []int) int {
 	uniqueIndex := 1
 	for i := 1; i < len(nums); i++ {
 		// if the current element is not a duplicate
-		// move it to the next position of the unique index
+		// move it to the Next position of the unique index
 		if nums[i] != nums[i-1] {
 			nums[uniqueIndex] = nums[i]
 			uniqueIndex++
