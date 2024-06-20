@@ -2,34 +2,29 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 )
 
-func QuickSort(list []int) []int {
-	if len(list) < 2 {
-		return list
-	}
+func BinarySearch(list []int, target int) int {
+	low := 0
+	high := len(list) - 1
 
-	r := rand.Intn(len(list))
-	pivot := list[r]
-	var less, same, greater []int
-	for _, v := range list {
-		if v > pivot {
-			greater = append(greater, v)
-		} else if v < pivot {
-			less = append(less, v)
+	for low <= high {
+		mid := (low + high) / 2
+		guess := list[mid]
+		if target == guess {
+			return mid
+		}
+		if guess > target {
+			high = mid - 1
 		} else {
-			same = append(same, v)
+			low = mid + 1
 		}
 	}
 
-	sorted := append(QuickSort(less), same...)
-	sorted = append(sorted, QuickSort(greater)...)
-
-	return sorted
+	return -1
 }
 
 func main() {
-	got := QuickSort([]int{5, 1, 1, 2, 0, 0, 3, 6, 6, 2, -1})
+	got := BinarySearch([]int{12, 23, 55, 100}, 12)
 	fmt.Printf("got: %d\n", got)
 }

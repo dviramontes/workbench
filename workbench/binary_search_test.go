@@ -28,6 +28,14 @@ func TestBinarySearch(t *testing.T) {
 			},
 			want: -1,
 		},
+		{
+			name: "C, fails because input is not sorted",
+			args: args{
+				list:   []int{12, 2, 3, 4, 6},
+				target: 12,
+			},
+			want: -1,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
