@@ -25,7 +25,7 @@ type CurrencyPair struct {
 
 type Graph map[string]map[string]float64
 
-type Set map[string]bool
+type set map[string]bool
 
 func ConvertCurrency(currencies []CurrencyPair, fromCurrency string, toCurrency string) float64 {
 	// build the graph from the currency pairs
@@ -42,7 +42,7 @@ func ConvertCurrency(currencies []CurrencyPair, fromCurrency string, toCurrency 
 		graph[c.ToCurrency][c.FromCurrency] = RoundTo(1/c.ExchangeRate, 2)
 	}
 
-	return DFS(graph, fromCurrency, toCurrency, 1.0, make(Set))
+	return DFS(graph, fromCurrency, toCurrency, 1.0, make(set))
 }
 
 // round a decimal to 2 decimal places
@@ -51,7 +51,7 @@ func RoundTo(val float64, precision uint) float64 {
 	return math.Round(val*ratio) / ratio
 }
 
-func DFS(graph Graph, curr string, target string, pathValue float64, visited Set) float64 {
+func DFS(graph Graph, curr string, target string, pathValue float64, visited set) float64 {
 	if curr == target {
 		return pathValue
 	}
