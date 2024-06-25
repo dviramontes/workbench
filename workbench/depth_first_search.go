@@ -23,13 +23,13 @@ type CurrencyPair struct {
 	ExchangeRate float64
 }
 
-type Graph map[string]map[string]float64
+type graph map[string]map[string]float64
 
 type set map[string]bool
 
 func ConvertCurrency(currencies []CurrencyPair, fromCurrency string, toCurrency string) float64 {
 	// build the graph from the currency pairs
-	var graph = make(Graph)
+	var graph = make(graph)
 	for _, c := range currencies {
 		if _, ok := graph[c.FromCurrency]; !ok {
 			graph[c.FromCurrency] = make(map[string]float64)
@@ -51,7 +51,7 @@ func RoundTo(val float64, precision uint) float64 {
 	return math.Round(val*ratio) / ratio
 }
 
-func DFS(graph Graph, curr string, target string, pathValue float64, visited set) float64 {
+func DFS(graph graph, curr string, target string, pathValue float64, visited set) float64 {
 	if curr == target {
 		return pathValue
 	}
