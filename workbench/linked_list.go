@@ -22,10 +22,10 @@ type LinkedList struct {
 
 func (ll *LinkedList) Insert(data int) {
 	newNode := &Node{Data: data}
+	ll.length++
 
 	if ll.head == nil {
 		ll.head = newNode
-		ll.length++
 		return
 	}
 
@@ -34,7 +34,6 @@ func (ll *LinkedList) Insert(data int) {
 		current = current.Next
 	}
 	current.Next = newNode
-	ll.length++
 }
 
 func (ll *LinkedList) Print() {
